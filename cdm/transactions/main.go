@@ -24,7 +24,7 @@ func main() {
 		Id:               72,
 		SumOfTransaction: 1_203_91,
 		Date:             1592657460,
-		MCC:              "5812",
+		MCC:              "5852",
 		Status:           "Обработано",
 	}
 	transaction2 := card.Transaction{

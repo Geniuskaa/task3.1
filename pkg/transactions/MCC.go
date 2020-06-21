@@ -1,19 +1,14 @@
 package card
 
-func TranslateMCC(Mcc string) (category string) {
-
+const errCategoryNotFound = "Категория не указана"
+func TranslateMCC(Mcc string) string {
 	MCC := Mcc
 	mcc := map[string]string{
 		"5411": "Супермаркеты",
 		"5812": "Рестораны",
 	}
-
-	Value, ok := mcc[MCC]
-	switch ok {
-	case true:
-		category = Value
-	case false:
-		category = "Категория не указана"
+	if value, ok := mcc[MCC]; ok {
+		return value
 	}
-	return
+	return errCategoryNotFound;
 }
