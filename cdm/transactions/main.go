@@ -21,9 +21,24 @@ func main() {
 	fmt.Println(master)
 
 	transaction1 := card.Transaction{
-		Id:               82,
+		Id:               72,
 		SumOfTransaction: 1_203_91,
 		Date:             1592657460,
+		MCC:              "5812",
+		Status:           "Обработано",
+	}
+	transaction2 := card.Transaction{
+		Id:               83,
+		SumOfTransaction: 1_273_71,
+		Date:             1592657560,
+		MCC:              "5411",
+		Status:           "Обработано",
+	}
+
+	transaction3 := card.Transaction{
+		Id:               94,
+		SumOfTransaction: 1_563_91,
+		Date:             1592743860,
 		MCC:              "5812",
 		Status:           "Обработано",
 	}
@@ -37,5 +52,10 @@ func main() {
 	category := card.TranslateMCC(master.Transactions[0].MCC)
 	fmt.Println(category)
 
+	card.AddTransaction(master, transaction2)
+	card.AddTransaction(master, transaction3)
+
+
+	fmt.Println(card.LastNTransactions(master, 3))
 
 }

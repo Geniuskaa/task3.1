@@ -36,3 +36,30 @@ func SumByMCC(transaction Transaction, mcc string) (sum int64) {
 	}
 	return sum
 }
+
+func LastNTransactions(card *Card, n int) []Transaction {
+	length := len(card.Transactions)
+	i := 0
+	//var m int
+	var copyOfTransactions []Transaction
+	if (length < n || length == n) {
+		copyOfTransactions = make([]Transaction, length)
+		for (length > 0) {
+			copyOfTransactions[i] = card.Transactions[length - 1]
+			i++
+			length--
+		}
+		//m = copy(copyOfTransactions, card.Transactions)
+	} else {
+		copyOfTransactions = make([]Transaction, n)
+		for (n > 0) {
+			copyOfTransactions[i] = card.Transactions[length - 1]
+			i++
+			length--
+			n--
+		}
+		//m = copy(copyOfTransactions, card.Transactions[(len(card.Transactions) - n):])
+	}
+	//fmt.Println(m)
+	return copyOfTransactions
+}
