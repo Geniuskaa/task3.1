@@ -23,16 +23,20 @@ func AddTransaction(card *Card, transaction Transaction) *Card {
 	return card
 }
 
-func SumByMCC(transaction Transaction, mcc string) (sum int64) {
-	switch mcc {
-	case "5411":
-		sum = transaction.SumOfTransaction
-	case "5812":
-		sum = transaction.SumOfTransaction
-	case "", " ":
-		sum = 0
-	default:
-		sum = 0
+func SumByMCC(transaction []Transaction, mcc []string) (sum int64) {
+	length := len(transaction)
+	if (contains(mcc, transaction[length - 1].MCC) == true) {
+		sum = transaction[length - 1].SumOfTransaction
 	}
-	return sum
+	return
 }
+
+func contains(a []string, x string) bool {
+	for _, n := range a {
+		if x == n {
+			return true
+		}
+	}
+	return false
+}
+

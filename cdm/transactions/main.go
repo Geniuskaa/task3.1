@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	card "github.com/Geniuskaa/task3.1/pkg/transactions"
+	"github.com/Geniuskaa/task3.1/pkg/card"
 )
 
 func main() {
@@ -28,10 +28,12 @@ func main() {
 		Status:           "Обработано",
 	}
 
-	card.AddTransaction(master, transaction1)
-	card.SumByMCC(transaction1, transaction1.MCC)
+	mcc := []string {"5411", "5812"}
 
-	fmt.Println(card.SumByMCC(transaction1, transaction1.MCC))
+	card.AddTransaction(master, transaction1)
+	card.SumByMCC(master.Transactions, mcc)
+
+	fmt.Println(card.SumByMCC(master.Transactions, mcc))
 	fmt.Println(master)
 
 }
