@@ -34,4 +34,8 @@ func main() {
 	fmt.Println(card.SumByMCC(transaction1, transaction1.MCC))
 	fmt.Println(master)
 
+	category := card.TranslateMCC(master.Transactions[0].MCC)
+	fmt.Println(category)
+
+
 }
